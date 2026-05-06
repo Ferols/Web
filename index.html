@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ferols Tours &amp; Safaris &mdash; Premium East African Experiences</title>
+  <link rel="icon" type="image/jpeg" href="logo.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root{--green:#1B4D2E;--gd:#0F2D1A;--gm:#245C38;--gold:#C9A020;--glt:#E8BC3C;--gdim:#8C6E10;--cream:#F7F0E3;--sand:#EDE0C4;--sandd:#D6C49A;--char:#1A1A1A;--white:#FFFFFF;--muted:#6B6350;--r:6px;--sh:0 8px 40px rgba(0,0,0,.18);--cs:0 4px 24px rgba(0,0,0,.10)}
@@ -55,9 +56,13 @@
     .scroll-m{width:22px;height:34px;border:1.5px solid rgba(255,255,255,.4);border-radius:12px;position:relative}
     .scroll-m::after{content:'';width:3px;height:6px;background:var(--gold);border-radius:2px;position:absolute;top:6px;left:50%;transform:translateX(-50%);animation:sm 1.8s infinite}
     @keyframes sm{0%{opacity:1;top:6px}100%{opacity:0;top:20px}}
-    .ann{background:var(--gold);color:var(--char);text-align:center;padding:10px 24px;font-size:.78rem;font-weight:600;letter-spacing:.04em}
+    .ann{background:var(--green);color:var(--white);text-align:center;padding:13px 24px;font-size:.82rem;font-weight:600;letter-spacing:.03em;position:relative;overflow:hidden}
+    .ann::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(201,160,32,.15) 50%,transparent 100%);animation:annshine 2.8s infinite}
+    @keyframes annshine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+    .ann a{color:var(--gold)!important;font-weight:800}
+    .ann strong{color:var(--gold)}
     /* EXPERIENCES */
-    #experiences{padding:100px 0;background:var(--cream)}
+    #experiences{padding:64px 0 100px;background:var(--cream)}
     .exp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px}
     .exp-card{background:var(--white);border-radius:12px;overflow:hidden;box-shadow:var(--cs);transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column}
     .exp-card:hover{transform:translateY(-8px);box-shadow:var(--sh)}
@@ -122,6 +127,27 @@
     .itin-dt{font-size:.88rem;font-weight:700;color:var(--gd);margin-bottom:3px}.itin-dd{font-size:.78rem;color:var(--muted);line-height:1.55}
     .dep-btn{display:block;text-align:center;background:var(--green);color:var(--white);padding:11px;border-radius:6px;font-size:.84rem;font-weight:600;letter-spacing:.04em;transition:background .2s;margin-top:12px}
     .dep-btn:hover{background:var(--gm)}.dep-note{text-align:center;margin-top:44px}.dep-note p{font-size:.9rem;color:var(--muted);margin-bottom:18px}
+        /* SYOKIMAU ROOMS */
+    .syok-rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .syok-room{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;overflow:hidden;transition:background .3s}
+    .syok-room:hover{background:rgba(255,255,255,.12)}
+    .syok-room-featured{border-color:rgba(201,160,32,.5);background:rgba(201,160,32,.07)}
+    .syok-room-img{height:140px;overflow:hidden;position:relative}
+    .syok-room-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+    .syok-room:hover .syok-room-img img{transform:scale(1.06)}
+    .syok-room-body{padding:16px}
+    .syok-room-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .syok-badge{font-size:.6rem;background:var(--gold);color:var(--char);padding:2px 7px;border-radius:4px;font-weight:700;letter-spacing:.06em}
+    .syok-room-price{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--white);margin-bottom:10px}
+    .syok-room-price span{font-size:.78rem;font-family:'DM Sans',sans-serif;color:rgba(255,255,255,.55);font-weight:400}
+    .syok-room-feats{list-style:none;display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+    .syok-room-feats li{font-size:.76rem;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:7px}
+    .syok-room-feats li::before{content:'✓';color:var(--gold);font-weight:700;font-size:.7rem;flex-shrink:0}
+    .syok-btn{display:block;text-align:center;background:var(--green);color:var(--white);padding:9px;border-radius:6px;font-size:.8rem;font-weight:600;letter-spacing:.04em;transition:background .2s}
+    .syok-btn:hover{background:var(--gm)}
+    @media(max-width:900px){.syok-rooms{grid-template-columns:1fr 1fr;gap:14px}}
+    @media(max-width:560px){.syok-rooms{grid-template-columns:1fr;gap:12px}.syok-room-img{height:160px}}
+
     /* STAYCATION */
     #staycation{padding:100px 0;background:var(--white)}
 
@@ -366,14 +392,18 @@
       .dayout-img{height:140px}
       .dayout-body{padding:14px 16px}
       .dayout-title{font-size:.96rem}
+      .dayout-inc-body{padding:10px 12px}
+      .dayout-cta-wrap{padding-top:8px}
     }
     /* DAY OUT — SMALL MOBILE */
     @media(max-width:480px){
-      .dayout-grid{grid-template-columns:1fr}
-      .dayout-img{height:180px}
-      .dayout-card{flex-direction:row;max-height:140px}
-      .dayout-img{width:130px;height:auto;flex-shrink:0}
+      .dayout-grid{grid-template-columns:1fr;gap:14px}
+      .dayout-card{flex-direction:column;max-height:none}
+      .dayout-img{width:100%;height:170px;flex-shrink:unset}
       .dayout-body{padding:14px 16px}
+      .dayout-inc-toggle{font-size:.76rem;padding:9px 11px}
+      .dayout-cta-wrap{padding-top:10px}
+      .dayout-cta{font-size:.8rem}
     }
 
     /* TESTIMONIALS */
@@ -385,7 +415,15 @@
     .ta{display:flex;align-items:center;gap:12px}
     .tav{width:42px;height:42px;border-radius:50%;background:var(--sandd);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--green);flex-shrink:0}
     .tn{font-weight:700;font-size:.86rem}.tr{font-size:.74rem;color:var(--muted);margin-top:2px}.ts{color:var(--gold);font-size:.82rem;letter-spacing:2px;margin-bottom:2px}
-    /* CTA */
+    /* Cross-border route grid — responsive */
+    .route-highlights{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:0}
+    .route-item{font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:6px;line-height:1.4}
+    @media(max-width:768px){
+      .route-highlights{grid-template-columns:1fr;gap:5px}
+      .route-item{font-size:.76rem}
+    }
+
+        /* CTA */
     #cta-final{padding:120px 0;position:relative;overflow:hidden;text-align:center}
     .cta-bg{position:absolute;inset:0;background:linear-gradient(rgba(10,20,12,.78),rgba(10,20,12,.88)),url('images/cta-bg.jpg') center/cover no-repeat}
     .cta-in{position:relative;z-index:2;max-width:680px;margin:0 auto}
@@ -531,8 +569,7 @@
         <li><a href="#departures">Departures</a></li>
         <li><a href="#staycation">Staycations</a></li>
         <li><a href="#corporate">Corporate</a></li>
-        <li><a href="#dayout">Day Out</a></li>
-        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#dayout">Day&nbsp;Out</a></li>
         <li><a href="#footer">Contact</a></li>
       </ul>
       <a href="https://wa.me/254720265805?text=Hello" target="_blank" class="btn btn-gold nav-cta" style="padding:10px 20px;font-size:.82rem">Book on WhatsApp</a>
@@ -549,7 +586,6 @@
   <a href="#staycation" class="ml">Staycations</a>
   <a href="#corporate" class="ml">Corporate</a>
   <a href="#dayout" class="ml">Day Out</a>
-  <a href="#testimonials" class="ml">Reviews</a>
   <a href="#footer" class="ml">Contact</a>
   <a href="https://wa.me/254720265805" target="_blank" class="btn btn-gold" style="margin-top:8px">Book on WhatsApp</a>
 </div>
@@ -558,7 +594,6 @@
   <div class="hero-bg"></div>
   <div class="con">
     <div class="hero-c">
-      <div class="hero-badge">&#127757; Nairobi &middot; Kenya &middot; East Africa</div>
       <h1 class="hero-h1">Experience <em>Africa</em><br>Through Curated<br>Safari Adventures</h1>
       <p class="hero-sub">Premium safaris, weekend getaways, and luxury staycations crafted for unforgettable moments in East Africa.</p>
       <div class="hero-btns">
@@ -575,7 +610,7 @@
   <div class="scroll-h"><div class="scroll-m"></div><span>Scroll to explore</span></div>
 </section>
 
-<div class="ann">&#127807; New departures added weekly &mdash; Western Kenya, Coast, Cross-Border &amp; more. WhatsApp us to reserve your spot!</div>
+<div class="ann">&#127880; <strong>Madaraka Weekend Special:</strong> Kisumu &amp; Lake Victoria &mdash; 3 Days&nbsp;/&nbsp;2 Nights &bull; Limited spots! <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Madaraka%20Weekend%20Kisumu%20trip." target="_blank" style="color:var(--char);font-weight:800;text-decoration:underline;margin-left:6px">Reserve Now &rarr;</a></div>
 
 <section id="experiences">
   <div class="con">
@@ -675,6 +710,7 @@
       <button class="dep-reg" data-region="nairobi">Nairobi Metro</button>
       <button class="dep-reg" data-region="southrift">South Rift</button>
       <button class="dep-reg" data-region="central">Central Kenya</button>
+      <button class="dep-reg" data-region="eastern">Eastern Kenya</button>
       <button class="dep-reg" data-region="western">Western Kenya</button>
       <button class="dep-reg" data-region="coast">Coast</button>
       <button class="dep-reg" data-region="border">Cross-Border</button>
@@ -723,7 +759,7 @@
           <div class="dep-meta"><span class="dep-spots open">Open</span><span class="dep-dur">1 Day Trip</span></div>
           <h3 class="dep-title">Amboseli Day Safari</h3>
           <p class="dep-desc">Kenya&rsquo;s most iconic view &mdash; elephants roaming against the backdrop of Kilimanjaro.</p>
-          <div class="dep-info"><div><label>Departure</label><strong>Sat &amp; Sun, 5:30 AM</strong></div><div><label>Return</label><strong>Same Day, ~8 PM</strong></div><div><label>From Nairobi</label><strong class="price">KES 19,500 pp</strong></div></div>
+          <div class="dep-info"><div><label>Departure</label><strong>Sat &amp; Sun, 5:30 AM</strong></div><div><label>Return</label><strong>Same Day, ~8 PM</strong></div><div><label>From Nairobi</label><strong class="price">KES 14,500 pp</strong></div></div>
           <button class="itin-toggle" onclick="toggleItin(this)">&#128466; Sample Itinerary <span class="arr">&#9660;</span></button>
           <div class="itin-body">
             <div class="itin-day"><div class="itin-dl">Morning</div><div class="itin-dt">Depart Nairobi 5:30 AM</div><div class="itin-dd">Drive to Amboseli (~3 hrs). Morning game drive. Elephant sightings and Kilimanjaro views.</div></div>
@@ -740,7 +776,7 @@
           <div class="dep-meta"><span class="dep-spots open">Open</span><span class="dep-dur">2 Days / 1 Night</span></div>
           <h3 class="dep-title">Naivasha &amp; Hell&rsquo;s Gate</h3>
           <p class="dep-desc">Flamingo lake boat rides and cycling through Hell&rsquo;s Gate Gorge.</p>
-          <div class="dep-info"><div><label>Departure</label><strong>Every Saturday</strong></div><div><label>Return</label><strong>Sunday Afternoon</strong></div><div><label>From Nairobi</label><strong class="price">KES 26,000 pp</strong></div></div>
+          <div class="dep-info"><div><label>Departure</label><strong>Every Saturday</strong></div><div><label>Return</label><strong>Sunday Afternoon</strong></div><div><label>From Nairobi</label><strong class="price">KES 20,000 pp</strong></div></div>
           <button class="itin-toggle" onclick="toggleItin(this)">&#128466; Sample Itinerary <span class="arr">&#9660;</span></button>
           <div class="itin-body">
             <div class="itin-day"><div class="itin-dl">Day 1 &mdash; Saturday</div><div class="itin-dt">Nairobi &rarr; Naivasha</div><div class="itin-dd">Drive to lake. Afternoon boat ride (hippos, flamingos). Lakeside camp overnight.</div></div>
@@ -767,7 +803,7 @@
         </div>
       </div>
 
-      <div class="dep-card reveal d2" data-region="nairobi">
+      <div class="dep-card reveal d2" data-region="eastern">
         <div class="dep-stripe" style="background:linear-gradient(90deg,#8b3a0f,#c05a1a)"></div>
         <div class="dep-body">
           <div class="dep-meta"><span class="dep-spots open">Open</span><span class="dep-dur">3 Days / 2 Nights</span></div>
@@ -983,21 +1019,23 @@
         <div style="position:absolute;top:16px;right:16px;background:var(--gold);color:var(--char);font-size:.65rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:100px;z-index:5">Coming Soon</div>
         <div class="dep-stripe" style="background:linear-gradient(90deg,#2c0a00,#8b2a00,#c9a020)"></div>
         <div class="dep-body">
-          <div class="dep-meta"><span class="dep-spots monthly" style="background:rgba(201,160,32,.15);color:var(--gold-dim)">Epic Journey</span><span class="dep-dur">21 Days / 20 Nights</span></div>
+          <div class="dep-meta"><span class="dep-spots monthly" style="background:rgba(201,160,32,.15);color:var(--gold-dim)">Once a Year</span><span class="dep-dur">14 Days / 13 Nights</span></div>
           <h3 class="dep-title">Southern Africa Grand Tour</h3>
-          <p class="dep-desc" style="font-style:italic;color:var(--muted)">The ultimate overland adventure &mdash; Tanzania, Zambia, Botswana, and Namibia. Three weeks. Four countries. A lifetime of stories.</p>
+          <p class="dep-desc" style="font-style:italic;color:var(--muted)">The ultimate overland adventure &mdash; Tanzania, Zambia, Botswana, and Namibia. Two weeks. Six countries. Africa from north to south.</p>
           <div style="background:var(--cream);border-radius:8px;padding:14px 16px;margin-bottom:16px">
             <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gdim);margin-bottom:10px">Route Highlights</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-              <div style="font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:6px"><span style="color:var(--gold)">&#9654;</span> Serengeti, Tanzania</div>
-              <div style="font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:6px"><span style="color:var(--gold)">&#9654;</span> Victoria Falls, Zambia</div>
-              <div style="font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:6px"><span style="color:var(--gold)">&#9654;</span> Chobe NP, Botswana</div>
-              <div style="font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:6px"><span style="color:var(--gold)">&#9654;</span> Okavango Delta</div>
-              <div style="font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:6px"><span style="color:var(--gold)">&#9654;</span> Etosha NP, Namibia</div>
-              <div style="font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:6px"><span style="color:var(--gold)">&#9654;</span> Sossusvlei Dunes</div>
+            <div class="route-highlights">
+              <div class="route-item"><span style="color:var(--gold)">&#9654;</span> Nairobi, Kenya</div>
+              <div class="route-item"><span style="color:var(--gold)">&#9654;</span> Arusha &amp; Serengeti, TZ</div>
+              <div class="route-item"><span style="color:var(--gold)">&#9654;</span> Lusaka, Zambia</div>
+              <div class="route-item"><span style="color:var(--gold)">&#9654;</span> Victoria Falls</div>
+              <div class="route-item"><span style="color:var(--gold)">&#9654;</span> Chobe NP, Botswana</div>
+              <div class="route-item"><span style="color:var(--gold)">&#9654;</span> Okavango Delta</div>
+              <div class="route-item"><span style="color:var(--gold)">&#9654;</span> Windhoek, Namibia</div>
+              <div class="route-item"><span style="color:var(--gold)">&#9654;</span> Sossusvlei &amp; Etosha</div>
             </div>
           </div>
-          <div class="dep-info"><div><label>Estimated Depart</label><strong>Q3 2026</strong></div><div><label>Duration</label><strong>21 Days</strong></div><div><label>Est. From Nairobi</label><strong class="price">KES 420,000 pp</strong></div></div>
+          <div class="dep-info"><div><label>Est. Departure</label><strong>Q3 2026</strong></div><div><label>Duration</label><strong>14 Days</strong></div><div><label>Est. From Nairobi</label><strong class="price">KES 420,000 pp</strong></div></div>
           <a href="https://wa.me/254720265805?text=Hi%2C%20I%27m%20interested%20in%20the%20Southern%20Africa%20Grand%20Tour.%20Please%20add%20me%20to%20the%20interest%20list." target="_blank" class="dep-btn" style="background:var(--gold);color:var(--char)">Register Interest &rarr;</a>
         </div>
       </div>
@@ -1009,59 +1047,252 @@
   </div>
 </section>
 
-<section id="staycation">
+<section id="dayout">
   <div class="con">
-    <div class="stay-grid">
-      <div class="stay-left">
-        <span class="lbl reveal">New Experience</span>
-        <h2 class="stitle reveal" style="text-align:left">Luxury Staycations<br>in <em>Nairobi</em></h2>
-        <p class="stay-desc reveal">You don&rsquo;t always need to leave the city to escape. We design immersive private experiences inside handpicked Nairobi spaces &mdash; from romantic hideaways to elegant birthday surprises.</p>
-        <div class="stay-feats reveal">
-          <div class="stay-feat"><div class="stay-dot"></div>Romantic couple escapes &amp; anniversary setups</div>
-          <div class="stay-feat"><div class="stay-dot"></div>Luxury birthday planning &amp; d&eacute;cor</div>
-          <div class="stay-feat"><div class="stay-dot"></div>Private Airbnb experiences, fully curated</div>
-          <div class="stay-feat"><div class="stay-dot"></div>Chef, photography &amp; wellness add-ons available</div>
+    <div class="dayout-intro reveal">
+      <span class="lbl">Group Day Experiences</span>
+      <h2 class="stitle">Your Crew Deserves<br>a <em>Day Out</em></h2>
+      <p class="sdesc">Whether it&rsquo;s a chama, a church group, siblings, or colleagues &mdash; we create memorable shared experiences for every kind of group. One day. Zero stress. All handled by Ferols.</p>
+    </div>
+
+    <div class="dayout-grid">
+
+      <div class="dayout-card reveal d1">
+        <div class="dayout-img">
+          <img src="images/dayout-couples.jpg" alt="Couples Day Out" loading="lazy" />
         </div>
-        <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Staycation." target="_blank" class="btn btn-green reveal">Book Your Staycation &rarr;</a>
-        <div class="stay-photos reveal">
-          <div class="stay-photo"><img src="images/stay-1.jpg" alt="Luxury room" loading="lazy" /></div>
-          <div class="stay-photo"><img src="images/stay-2.jpg" alt="Romantic setup" loading="lazy" /></div>
-          <div class="stay-photo"><img src="images/stay-3.jpg" alt="Luxury suite" loading="lazy" /></div>
-        </div>
-      </div>
-      <div class="stay-pkgs">
-        <div class="stay-pkg reveal">
-          <div class="stay-hd"><div class="stay-pn">Getaway Package</div></div>
-          <div class="stay-price">KES 18,000 <small>/ night</small></div>
-          <ul class="stay-items">
-            <li>One-night private Airbnb (2 guests)</li><li>Welcome drinks &amp; snacks basket</li>
-            <li>Curated d&eacute;cor setup (petals, candles)</li><li>Breakfast delivered to room</li>
-            <li>Dedicated WhatsApp host support</li>
-          </ul>
-          <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20the%20Getaway%20Staycation%20Package." target="_blank" class="btn-og" style="width:100%;justify-content:center">Book This Package</a>
-        </div>
-        <div class="stay-pkg feat reveal d1">
-          <div class="stay-hd"><div class="stay-pn">Premium Experience</div><span class="stay-pb">Best Choice</span></div>
-          <div class="stay-price">KES 35,000 <small>/ night</small></div>
-          <ul class="stay-items">
-            <li>Two-night luxury Airbnb (sleeps 4)</li><li>Private chef &mdash; 3-course dinner included</li>
-            <li>Full luxury d&eacute;cor &amp; balloon setup</li><li>Breakfast &amp; brunch both mornings</li>
-            <li>1-hour professional photography session</li><li>Personalised welcome note &amp; flowers</li>
-            <li>Airport/hotel transfers included</li>
-          </ul>
-          <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20the%20Premium%20Staycation%20Package." target="_blank" class="btn btn-gold" style="width:100%;justify-content:center">Book This Package</a>
-        </div>
-        <div class="addons reveal d2">
-          <h4>&#10024; Available Add-Ons</h4>
-          <div class="atags">
-            <span class="atag">&#127874; Birthday Cake</span><span class="atag">&#128247; Photo Session</span>
-            <span class="atag">&#128104;&#8205;&#127859; Private Chef</span><span class="atag">&#127801; Extra D&eacute;cor</span>
-            <span class="atag">&#129494; Spa Treatment</span><span class="atag">&#127870; Champagne</span>
-            <span class="atag">&#128663; Transfer Service</span>
+        <div class="dayout-body">
+          <div class="dayout-icon">&#128145;</div>
+          <h3 class="dayout-title">Couples Day Out</h3>
+          <p class="dayout-desc">A curated day for two &mdash; picnic setups, scenic drives, sundowners, or a private lakeside experience. Romance, handled.</p>
+          <button class="dayout-inc-toggle" onclick="toggleDayoutInc(this)">&#10003; What&rsquo;s Included <span class="arr">&#9660;</span></button>
+          <div class="dayout-inc-body">
+            <ul>
+            <li>Transport from Nairobi and back (shared departure)</li>
+            <li>Scenic drive or nature experience (your choice of destination)</li>
+            <li>Picnic or outdoor dining setup for two</li>
+            <li>Sundowner or lake experience</li>
+            <li>Dedicated Ferols host for the day</li>
+            <li>WhatsApp itinerary shared 48hrs before</li>
+            </ul>
+          </div>
+          <div class="dayout-cta-wrap">
+            <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20Couples%20Day%20Out%20with%20Ferols%20Tours." target="_blank" class="dayout-cta">Plan This Day &rarr;</a>
           </div>
         </div>
       </div>
+
+<div class="dayout-card reveal d2">
+        <div class="dayout-img">
+          <img src="images/dayout-ladies.jpg" alt="Ladies Day Out" loading="lazy" />
+        </div>
+        <div class="dayout-body">
+          <div class="dayout-icon">&#128144;</div>
+          <h3 class="dayout-title">Ladies Day Out</h3>
+          <p class="dayout-desc">Brunch spots, scenic parks, spa visits, wine farms, or a flower farm experience. A day designed for the girls.</p>
+          <button class="dayout-inc-toggle" onclick="toggleDayoutInc(this)">&#10003; What&rsquo;s Included <span class="arr">&#9660;</span></button>
+          <div class="dayout-inc-body">
+            <ul>
+            <li>Transport from Nairobi and back</li>
+            <li>Entry fees to selected venue (flower farm, park, or wine farm)</li>
+            <li>Group brunch or lunch at scenic location</li>
+            <li>Guided experience at chosen destination</li>
+            <li>Dedicated Ferols host for the day</li>
+            <li>Group photo moment included</li>
+            </ul>
+          </div>
+          <div class="dayout-cta-wrap">
+            <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20Ladies%20Day%20Out%20with%20Ferols%20Tours." target="_blank" class="dayout-cta">Plan This Day &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+<div class="dayout-card reveal d1">
+        <div class="dayout-img">
+          <img src="images/dayout-siblings.jpg" alt="Siblings Day Out" loading="lazy" />
+        </div>
+        <div class="dayout-body">
+          <div class="dayout-icon">&#128106;</div>
+          <h3 class="dayout-title">Siblings Day Out</h3>
+          <p class="dayout-desc">Because family time deserves more than a WhatsApp group. A day built around your sibling crew &mdash; small or large.</p>
+          <button class="dayout-inc-toggle" onclick="toggleDayoutInc(this)">&#10003; What&rsquo;s Included <span class="arr">&#9660;</span></button>
+          <div class="dayout-inc-body">
+            <ul>
+            <li>Transport from Nairobi and back</li>
+            <li>Entry to scenic destination of your choice</li>
+            <li>Outdoor activity — boat ride, walk, or game drive</li>
+            <li>Group lunch or picnic at destination</li>
+            <li>Dedicated Ferols host throughout</li>
+            <li>Suitable for mixed ages including children</li>
+            </ul>
+          </div>
+          <div class="dayout-cta-wrap">
+            <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20Siblings%20Day%20Out%20with%20Ferols%20Tours." target="_blank" class="dayout-cta">Plan This Day &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+<div class="dayout-card reveal d3">
+        <div class="dayout-img">
+          <img src="images/dayout-colleagues.jpg" alt="Colleagues Day Out" loading="lazy" />
+        </div>
+        <div class="dayout-body">
+          <div class="dayout-icon">&#128084;</div>
+          <h3 class="dayout-title">Colleagues Day Out</h3>
+          <p class="dayout-desc">Step away from the desk and into the wild. Team games, outdoor lunches, and experiences that build real connection.</p>
+          <button class="dayout-inc-toggle" onclick="toggleDayoutInc(this)">&#10003; What&rsquo;s Included <span class="arr">&#9660;</span></button>
+          <div class="dayout-inc-body">
+            <ul>
+            <li>Transport from Nairobi and back</li>
+            <li>Outdoor team activity or game at chosen venue</li>
+            <li>Group lunch or BBQ setup</li>
+            <li>Entry to selected park or recreational site</li>
+            <li>Dedicated Ferols coordinator on the ground</li>
+            <li>Customisable schedule around your group</li>
+            </ul>
+          </div>
+          <div class="dayout-cta-wrap">
+            <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20Colleagues%20Day%20Out%20with%20Ferols%20Tours." target="_blank" class="dayout-cta">Plan This Day &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+<div class="dayout-card reveal d3">
+        <div class="dayout-img">
+          <img src="images/dayout-corporate.jpg" alt="Corporate Day Out" loading="lazy" />
+        </div>
+        <div class="dayout-body">
+          <div class="dayout-icon">&#128200;</div>
+          <h3 class="dayout-title">Corporate Day Out</h3>
+          <p class="dayout-desc">One day, maximum impact. Strategy meets safari — half-day offsites, team lunches, or full-day game drives for your department.</p>
+          <button class="dayout-inc-toggle" onclick="toggleDayoutInc(this)">&#10003; What&rsquo;s Included <span class="arr">&#9660;</span></button>
+          <div class="dayout-inc-body">
+            <ul>
+            <li>Transport from office/Nairobi and back</li>
+            <li>Entry to selected park, conservancy, or venue</li>
+            <li>Half-day or full-day structured program</li>
+            <li>Team lunch or bush barbecue</li>
+            <li>Dedicated Ferols coordinator throughout</li>
+            <li>Optional: team challenge activities on request</li>
+            </ul>
+          </div>
+          <div class="dayout-cta-wrap">
+            <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20Corporate%20Day%20Out%20with%20Ferols%20Tours." target="_blank" class="dayout-cta">Plan This Day &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+<div class="dayout-card reveal d2">
+        <div class="dayout-img">
+          <img src="images/dayout-church.jpg" alt="Church Members Day Out" loading="lazy" />
+        </div>
+        <div class="dayout-body">
+          <div class="dayout-icon">&#9997;&#65039;</div>
+          <h3 class="dayout-title">Church Members Day Out</h3>
+          <p class="dayout-desc">Fellowship outside the four walls. Nature walks, scenic retreats, and group experiences for congregations of any size.</p>
+          <button class="dayout-inc-toggle" onclick="toggleDayoutInc(this)">&#10003; What&rsquo;s Included <span class="arr">&#9660;</span></button>
+          <div class="dayout-inc-body">
+            <ul>
+            <li>Group transport from Nairobi and back</li>
+            <li>Entry to scenic outdoor venue</li>
+            <li>Nature walk or guided experience</li>
+            <li>Group lunch at the destination</li>
+            <li>Dedicated Ferols coordinator throughout the day</li>
+            <li>Flexible for large congregations — we scale with you</li>
+            </ul>
+          </div>
+          <div class="dayout-cta-wrap">
+            <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20Church%20Members%20Day%20Out%20with%20Ferols%20Tours." target="_blank" class="dayout-cta">Plan This Day &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+<div class="dayout-card reveal d1">
+        <div class="dayout-img">
+          <img src="images/dayout-chama.jpg" alt="Chama Day Out" loading="lazy" />
+        </div>
+        <div class="dayout-body">
+          <div class="dayout-icon">&#128176;</div>
+          <h3 class="dayout-title">Chama Day Out</h3>
+          <p class="dayout-desc">Treat your investment group to something special. A well-earned group outing with great scenery and even better company.</p>
+          <button class="dayout-inc-toggle" onclick="toggleDayoutInc(this)">&#10003; What&rsquo;s Included <span class="arr">&#9660;</span></button>
+          <div class="dayout-inc-body">
+            <ul>
+            <li>Comfortable group transport from Nairobi and back</li>
+            <li>Entry to selected destination (park, lake, farm)</li>
+            <li>Group lunch or picnic setup</li>
+            <li>Guided activity or nature walk</li>
+            <li>Dedicated Ferols host for the day</li>
+            <li>Flexible departure time to suit your group</li>
+            </ul>
+          </div>
+          <div class="dayout-cta-wrap">
+            <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20Chama%20Day%20Out%20with%20Ferols%20Tours." target="_blank" class="dayout-cta">Plan This Day &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+<div class="dayout-card reveal d2">
+        <div class="dayout-img">
+          <img src="images/dayout-students.jpg" alt="Students Day Out" loading="lazy" />
+        </div>
+        <div class="dayout-body">
+          <div class="dayout-icon">&#127891;</div>
+          <h3 class="dayout-title">Students Day Out</h3>
+          <p class="dayout-desc">Educational, fun, and safe. Campus groups, field trips, and student adventures with trusted transport and guides.</p>
+          <button class="dayout-inc-toggle" onclick="toggleDayoutInc(this)">&#10003; What&rsquo;s Included <span class="arr">&#9660;</span></button>
+          <div class="dayout-inc-body">
+            <ul>
+            <li>Safe group transport from campus and back</li>
+            <li>Entry to educational or recreational venue</li>
+            <li>Guided nature or heritage experience</li>
+            <li>Group lunch included</li>
+            <li>Trained Ferols guide/coordinator on the day</li>
+            <li>Risk-assessed and school-friendly itinerary</li>
+            </ul>
+          </div>
+          <div class="dayout-cta-wrap">
+            <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20Students%20Day%20Out%20with%20Ferols%20Tours." target="_blank" class="dayout-cta">Plan This Day &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+<div class="dayout-card reveal d3">
+        <div class="dayout-img">
+          <img src="images/dayout-schoolmates.jpg" alt="School Mates Day Out" loading="lazy" />
+        </div>
+        <div class="dayout-body">
+          <div class="dayout-icon">&#127979;</div>
+          <h3 class="dayout-title">School Mates Day Out</h3>
+          <p class="dayout-desc">Reunite the old class and make new memories. From alumni brunches to full-day safari adventures together.</p>
+          <button class="dayout-inc-toggle" onclick="toggleDayoutInc(this)">&#10003; What&rsquo;s Included <span class="arr">&#9660;</span></button>
+          <div class="dayout-inc-body">
+            <ul>
+            <li>Transport from Nairobi and back</li>
+            <li>Entry to selected venue (park, lake, heritage site)</li>
+            <li>Group outdoor activity or scenic experience</li>
+            <li>Lunch or group picnic</li>
+            <li>Dedicated Ferols host on the day</li>
+            <li>Memory-making stops and photo moments</li>
+            </ul>
+          </div>
+          <div class="dayout-cta-wrap">
+            <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20School%20Mates%20Day%20Out%20with%20Ferols%20Tours." target="_blank" class="dayout-cta">Plan This Day &rarr;</a>
+          </div>
+        </div>
+      </div>
+
     </div>
+
+    <!-- Bottom CTA -->
+    <div class="reveal" style="background:var(--green);border-radius:14px;padding:36px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
+      <div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--white);margin-bottom:6px">Don&rsquo;t see your group here?</h3>
+        <p style="font-size:.88rem;color:rgba(255,255,255,.72);line-height:1.6">We plan day experiences for any group, occasion, or budget. Just tell us who&rsquo;s coming.</p>
+      </div>
+      <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20group%20day%20out%20with%20Ferols%20Tours.%20We%20are%20a%20group%20of%20" target="_blank" class="btn btn-gold" style="white-space:nowrap;flex-shrink:0">Plan Your Day Out &rarr;</a>
+    </div>
+
   </div>
 </section>
 
@@ -1118,7 +1349,7 @@
           <img src="images/corp-main.jpg" alt="Corporate team safari Kenya" loading="lazy" />
           <div class="corp-stat-bar">
             <div class="corp-stat">
-              <div class="corp-stat-num">10+</div>
+              <div class="corp-stat-num">3+</div>
               <div class="corp-stat-label">Group Size Min.</div>
             </div>
             <div class="corp-stat">
@@ -1138,252 +1369,125 @@
 </section>
 
 <!-- DAY OUT EXPERIENCES -->
-<section id="dayout">
+<section id="staycation">
   <div class="con">
-    <div class="dayout-intro reveal">
-      <span class="lbl">Group Day Experiences</span>
-      <h2 class="stitle">Your Crew Deserves<br>a <em>Day Out</em></h2>
-      <p class="sdesc">Whether it&rsquo;s a chama, a church group, siblings, or colleagues &mdash; we create memorable shared experiences for every kind of group. One day. Zero stress. All handled by Ferols.</p>
+    
+    <!-- FEROLS FURNISHED APARTMENTS -->
+    <div class="reveal" style="margin-bottom:56px">
+      <div style="background:linear-gradient(135deg,var(--green-deep,#0F2D1A),#1a4a2e);border-radius:14px;padding:36px 40px;position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;background:url('images/syok-bg.jpg') center/cover no-repeat;opacity:.08;border-radius:14px"></div>
+        <div style="position:relative;z-index:1">
+
+          <div style="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:28px">
+            <div>
+              <span class="lbl" style="color:var(--gold)">Our Own Property</span>
+              <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--white);margin-bottom:8px">Ferols <em style="color:var(--glt)">Furnished Apartments</em></h3>
+              <p style="font-size:.86rem;color:rgba(255,255,255,.65);line-height:1.7;max-width:520px">Self-contained furnished apartments on Chady Road, Syokimau — just behind Gateway Mall. Studio, 1-bedroom, and 2-bedroom units available. Book directly through us.</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:7px;flex-shrink:0">
+              <div style="display:flex;align-items:center;gap:8px;font-size:.8rem;color:rgba(255,255,255,.7)"><span style="color:var(--gold)">&#9992;&#65039;</span> 10 min from JKIA</div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:.8rem;color:rgba(255,255,255,.7)"><span style="color:var(--gold)">&#128650;</span> 5 min from SGR Station</div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:.8rem;color:rgba(255,255,255,.7)"><span style="color:var(--gold)">&#128739;</span> 3 min from Expressway</div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:.8rem;color:rgba(255,255,255,.7)"><span style="color:var(--gold)">&#128663;</span> Ample on-site parking</div>
+            </div>
+          </div>
+
+          <!-- Single card -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center">
+            <div style="border-radius:10px;overflow:hidden;height:220px;position:relative">
+              <img src="images/syok-apartment.jpg" alt="Ferols Furnished Apartments Syokimau" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" />
+            </div>
+            <div>
+              <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:10px">Room Options &amp; Specs</div>
+              <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:18px">
+                <div style="background:rgba(255,255,255,.06);border-radius:7px;padding:10px 14px;border:1px solid rgba(255,255,255,.1)">
+                  <div style="font-weight:700;color:var(--white);font-size:.86rem;margin-bottom:2px">Studio</div>
+                  <div style="font-size:.76rem;color:rgba(255,255,255,.55)">En-suite &bull; Kitchenette &bull; Wi-Fi &bull; TV</div>
+                </div>
+                <div style="background:rgba(255,255,255,.06);border-radius:7px;padding:10px 14px;border:1px solid rgba(255,255,255,.1)">
+                  <div style="font-weight:700;color:var(--white);font-size:.86rem;margin-bottom:2px">1 Bedroom</div>
+                  <div style="font-size:.76rem;color:rgba(255,255,255,.55)">Separate bedroom &bull; Full kitchen &bull; Lounge &bull; Wi-Fi &bull; TV</div>
+                </div>
+                <div style="background:rgba(201,160,32,.1);border-radius:7px;padding:10px 14px;border:1px solid rgba(201,160,32,.3)">
+                  <div style="font-weight:700;color:var(--gold);font-size:.86rem;margin-bottom:2px">2 Bedroom <span style="font-size:.65rem;background:var(--gold);color:var(--char);padding:2px 6px;border-radius:3px;margin-left:4px;font-family:'DM Sans',sans-serif">Best for Groups</span></div>
+                  <div style="font-size:.76rem;color:rgba(255,255,255,.55)">2 bedrooms &bull; 2 bathrooms &bull; Full kitchen &bull; Dining &bull; Wi-Fi &bull; TV &bull; Sleeps 4</div>
+                </div>
+              </div>
+              <div style="margin-bottom:16px">
+                <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--white)">KES 4,000 <span style="font-size:.82rem;font-family:'DM Sans',sans-serif;color:rgba(255,255,255,.5);font-weight:400">– 10,000 / night</span></div>
+                <div style="font-size:.74rem;color:rgba(255,255,255,.45);margin-top:2px">Room only &bull; Cook on call available as add-on</div>
+              </div>
+              <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20book%20a%20room%20at%20Ferols%20Furnished%20Apartments%2C%20Syokimau." target="_blank" class="syok-btn" style="display:inline-block;padding:10px 22px;width:auto">Check Availability &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Responsive: stack on mobile -->
+          <style>
+            @media(max-width:640px){
+              .syok-single-grid{grid-template-columns:1fr!important}
+              .syok-single-grid>div:first-child{height:180px!important}
+            }
+          </style>
+
+          <p style="margin-top:16px;font-size:.79rem;color:rgba(255,255,255,.45);text-align:center">Need accommodation anywhere else in Kenya? We source and book for you &mdash; <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20help%20finding%20accommodation%20in%20Kenya." target="_blank" style="color:var(--gold);font-weight:600">ask us &rarr;</a></p>
+
+        </div>
+      </div>
+    </div>
+      </div>
     </div>
 
-    <div class="dayout-grid">
-
-      <div class="dayout-card reveal d1">
-        <div class="dayout-img">
-          <img src="images/dayout-couples.jpg" alt="Couples Day Out" loading="lazy" />
+    <div class="stay-grid">
+      <div class="stay-left">
+        <span class="lbl reveal">New Experience</span>
+        <h2 class="stitle reveal" style="text-align:left">Luxury Staycations<br>in <em>Nairobi</em></h2>
+        <p class="stay-desc reveal">You don&rsquo;t always need to leave the city to escape. We design immersive private experiences inside handpicked Nairobi spaces &mdash; from romantic hideaways to elegant birthday surprises.</p>
+        <div class="stay-feats reveal">
+          <div class="stay-feat"><div class="stay-dot"></div>Romantic couple escapes &amp; anniversary setups</div>
+          <div class="stay-feat"><div class="stay-dot"></div>Luxury birthday planning &amp; d&eacute;cor</div>
+          <div class="stay-feat"><div class="stay-dot"></div>Private Airbnb experiences, fully curated</div>
+          <div class="stay-feat"><div class="stay-dot"></div>Chef, photography &amp; wellness add-ons available</div>
         </div>
-        <div class="dayout-body">
-          <div class="dayout-icon">&#128145;</div>
-          <h3 class="dayout-title">Couples Day Out</h3>
-          <p class="dayout-desc">A curated day for two &mdash; picnic setups, scenic drives, sundowners, or a private lakeside experience. Romance, handled.</p>
-          <button class="dayout-inc-toggle" onclick="toggleDayoutInc(this)">&#10003; What&rsquo;s Included <span class="arr">&#9660;</span></button>
-          <div class="dayout-inc-body">
-            <ul>
-            <li>Transport from Nairobi and back (shared departure)</li>
-            <li>Scenic drive or nature experience (your choice of destination)</li>
-            <li>Picnic or outdoor dining setup for two</li>
-            <li>Sundowner or lake experience</li>
-            <li>Dedicated Ferols host for the day</li>
-            <li>WhatsApp itinerary shared 48hrs before</li>
-            </ul>
-          </div>
-          <div class="dayout-cta-wrap">
-            <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20Couples%20Day%20Out%20with%20Ferols%20Tours." target="_blank" class="dayout-cta">Plan This Day &rarr;</a>
+        <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Staycation." target="_blank" class="btn btn-green reveal">Book Your Staycation &rarr;</a>
+        <div class="stay-photos reveal">
+          <div class="stay-photo"><img src="images/stay-1.jpg" alt="Luxury room" loading="lazy" /></div>
+          <div class="stay-photo"><img src="images/stay-2.jpg" alt="Romantic setup" loading="lazy" /></div>
+          <div class="stay-photo"><img src="images/stay-3.jpg" alt="Luxury suite" loading="lazy" /></div>
+        </div>
+      </div>
+      <div class="stay-pkgs">
+        <div class="stay-pkg reveal">
+          <div class="stay-hd"><div class="stay-pn">Getaway Package</div></div>
+          <div class="stay-price">KES 18,000 <small>/ night</small></div>
+          <ul class="stay-items">
+            <li>One-night private Airbnb (2 guests)</li><li>Welcome drinks &amp; snacks basket</li>
+            <li>Curated d&eacute;cor setup (petals, candles)</li><li>Breakfast delivered to room</li>
+            <li>Dedicated WhatsApp host support</li>
+          </ul>
+          <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20the%20Getaway%20Staycation%20Package." target="_blank" class="btn-og" style="width:100%;justify-content:center">Book This Package</a>
+        </div>
+        <div class="stay-pkg feat reveal d1">
+          <div class="stay-hd"><div class="stay-pn">Premium Experience</div><span class="stay-pb">Best Choice</span></div>
+          <div class="stay-price">KES 35,000 <small>/ night</small></div>
+          <ul class="stay-items">
+            <li>Two-night luxury Airbnb (sleeps 4)</li><li>Private chef &mdash; 3-course dinner included</li>
+            <li>Full luxury d&eacute;cor &amp; balloon setup</li><li>Breakfast &amp; brunch both mornings</li>
+            <li>1-hour professional photography session</li><li>Personalised welcome note &amp; flowers</li>
+            <li>Airport/hotel transfers included</li>
+          </ul>
+          <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20the%20Premium%20Staycation%20Package." target="_blank" class="btn btn-gold" style="width:100%;justify-content:center">Book This Package</a>
+        </div>
+        <div class="addons reveal d2">
+          <h4>&#10024; Available Add-Ons</h4>
+          <div class="atags">
+            <span class="atag">&#127874; Birthday Cake</span><span class="atag">&#128247; Photo Session</span>
+            <span class="atag">&#128104;&#8205;&#127859; Private Chef</span><span class="atag">&#127801; Extra D&eacute;cor</span>
+            <span class="atag">&#129494; Spa Treatment</span><span class="atag">&#127870; Champagne</span>
+            <span class="atag">&#128663; Transfer Service</span>
           </div>
         </div>
       </div>
-
-      <div class="dayout-card reveal d2">
-        <div class="dayout-img">
-          <img src="images/dayout-ladies.jpg" alt="Ladies Day Out" loading="lazy" />
-        </div>
-        <div class="dayout-body">
-          <div class="dayout-icon">&#128144;</div>
-          <h3 class="dayout-title">Ladies Day Out</h3>
-          <p class="dayout-desc">Brunch spots, scenic parks, spa visits, wine farms, or a flower farm experience. A day designed for the girls.</p>
-          <button class="dayout-inc-toggle" onclick="toggleDayoutInc(this)">&#10003; What&rsquo;s Included <span class="arr">&#9660;</span></button>
-          <div class="dayout-inc-body">
-            <ul>
-            <li>Transport from Nairobi and back</li>
-            <li>Entry fees to selected venue (flower farm, park, or wine farm)</li>
-            <li>Group brunch or lunch at scenic location</li>
-            <li>Guided experience at chosen destination</li>
-            <li>Dedicated Ferols host for the day</li>
-            <li>Group photo moment included</li>
-            </ul>
-          </div>
-          <div class="dayout-cta-wrap">
-            <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20Ladies%20Day%20Out%20with%20Ferols%20Tours." target="_blank" class="dayout-cta">Plan This Day &rarr;</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="dayout-card reveal d3">
-        <div class="dayout-img">
-          <img src="images/dayout-colleagues.jpg" alt="Colleagues Day Out" loading="lazy" />
-        </div>
-        <div class="dayout-body">
-          <div class="dayout-icon">&#128084;</div>
-          <h3 class="dayout-title">Colleagues Day Out</h3>
-          <p class="dayout-desc">Step away from the desk and into the wild. Team games, outdoor lunches, and experiences that build real connection.</p>
-          <button class="dayout-inc-toggle" onclick="toggleDayoutInc(this)">&#10003; What&rsquo;s Included <span class="arr">&#9660;</span></button>
-          <div class="dayout-inc-body">
-            <ul>
-            <li>Transport from Nairobi and back</li>
-            <li>Outdoor team activity or game at chosen venue</li>
-            <li>Group lunch or BBQ setup</li>
-            <li>Entry to selected park or recreational site</li>
-            <li>Dedicated Ferols coordinator on the ground</li>
-            <li>Customisable schedule around your group</li>
-            </ul>
-          </div>
-          <div class="dayout-cta-wrap">
-            <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20Colleagues%20Day%20Out%20with%20Ferols%20Tours." target="_blank" class="dayout-cta">Plan This Day &rarr;</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="dayout-card reveal d1">
-        <div class="dayout-img">
-          <img src="images/dayout-chama.jpg" alt="Chama Day Out" loading="lazy" />
-        </div>
-        <div class="dayout-body">
-          <div class="dayout-icon">&#128176;</div>
-          <h3 class="dayout-title">Chama Day Out</h3>
-          <p class="dayout-desc">Treat your investment group to something special. A well-earned group outing with great scenery and even better company.</p>
-          <button class="dayout-inc-toggle" onclick="toggleDayoutInc(this)">&#10003; What&rsquo;s Included <span class="arr">&#9660;</span></button>
-          <div class="dayout-inc-body">
-            <ul>
-            <li>Comfortable group transport from Nairobi and back</li>
-            <li>Entry to selected destination (park, lake, farm)</li>
-            <li>Group lunch or picnic setup</li>
-            <li>Guided activity or nature walk</li>
-            <li>Dedicated Ferols host for the day</li>
-            <li>Flexible departure time to suit your group</li>
-            </ul>
-          </div>
-          <div class="dayout-cta-wrap">
-            <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20Chama%20Day%20Out%20with%20Ferols%20Tours." target="_blank" class="dayout-cta">Plan This Day &rarr;</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="dayout-card reveal d2">
-        <div class="dayout-img">
-          <img src="images/dayout-church.jpg" alt="Church Members Day Out" loading="lazy" />
-        </div>
-        <div class="dayout-body">
-          <div class="dayout-icon">&#9997;&#65039;</div>
-          <h3 class="dayout-title">Church Members Day Out</h3>
-          <p class="dayout-desc">Fellowship outside the four walls. Nature walks, scenic retreats, and group experiences for congregations of any size.</p>
-          <button class="dayout-inc-toggle" onclick="toggleDayoutInc(this)">&#10003; What&rsquo;s Included <span class="arr">&#9660;</span></button>
-          <div class="dayout-inc-body">
-            <ul>
-            <li>Group transport from Nairobi and back</li>
-            <li>Entry to scenic outdoor venue</li>
-            <li>Nature walk or guided experience</li>
-            <li>Group lunch at the destination</li>
-            <li>Dedicated Ferols coordinator throughout the day</li>
-            <li>Flexible for large congregations — we scale with you</li>
-            </ul>
-          </div>
-          <div class="dayout-cta-wrap">
-            <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20Church%20Members%20Day%20Out%20with%20Ferols%20Tours." target="_blank" class="dayout-cta">Plan This Day &rarr;</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="dayout-card reveal d3">
-        <div class="dayout-img">
-          <img src="images/dayout-schoolmates.jpg" alt="School Mates Day Out" loading="lazy" />
-        </div>
-        <div class="dayout-body">
-          <div class="dayout-icon">&#127979;</div>
-          <h3 class="dayout-title">School Mates Day Out</h3>
-          <p class="dayout-desc">Reunite the old class and make new memories. From alumni brunches to full-day safari adventures together.</p>
-          <button class="dayout-inc-toggle" onclick="toggleDayoutInc(this)">&#10003; What&rsquo;s Included <span class="arr">&#9660;</span></button>
-          <div class="dayout-inc-body">
-            <ul>
-            <li>Transport from Nairobi and back</li>
-            <li>Entry to selected venue (park, lake, heritage site)</li>
-            <li>Group outdoor activity or scenic experience</li>
-            <li>Lunch or group picnic</li>
-            <li>Dedicated Ferols host on the day</li>
-            <li>Memory-making stops and photo moments</li>
-            </ul>
-          </div>
-          <div class="dayout-cta-wrap">
-            <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20School%20Mates%20Day%20Out%20with%20Ferols%20Tours." target="_blank" class="dayout-cta">Plan This Day &rarr;</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="dayout-card reveal d1">
-        <div class="dayout-img">
-          <img src="images/dayout-siblings.jpg" alt="Siblings Day Out" loading="lazy" />
-        </div>
-        <div class="dayout-body">
-          <div class="dayout-icon">&#128106;</div>
-          <h3 class="dayout-title">Siblings Day Out</h3>
-          <p class="dayout-desc">Because family time deserves more than a WhatsApp group. A day built around your sibling crew &mdash; small or large.</p>
-          <button class="dayout-inc-toggle" onclick="toggleDayoutInc(this)">&#10003; What&rsquo;s Included <span class="arr">&#9660;</span></button>
-          <div class="dayout-inc-body">
-            <ul>
-            <li>Transport from Nairobi and back</li>
-            <li>Entry to scenic destination of your choice</li>
-            <li>Outdoor activity — boat ride, walk, or game drive</li>
-            <li>Group lunch or picnic at destination</li>
-            <li>Dedicated Ferols host throughout</li>
-            <li>Suitable for mixed ages including children</li>
-            </ul>
-          </div>
-          <div class="dayout-cta-wrap">
-            <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20Siblings%20Day%20Out%20with%20Ferols%20Tours." target="_blank" class="dayout-cta">Plan This Day &rarr;</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="dayout-card reveal d2">
-        <div class="dayout-img">
-          <img src="images/dayout-students.jpg" alt="Students Day Out" loading="lazy" />
-        </div>
-        <div class="dayout-body">
-          <div class="dayout-icon">&#127891;</div>
-          <h3 class="dayout-title">Students Day Out</h3>
-          <p class="dayout-desc">Educational, fun, and safe. Campus groups, field trips, and student adventures with trusted transport and guides.</p>
-          <button class="dayout-inc-toggle" onclick="toggleDayoutInc(this)">&#10003; What&rsquo;s Included <span class="arr">&#9660;</span></button>
-          <div class="dayout-inc-body">
-            <ul>
-            <li>Safe group transport from campus and back</li>
-            <li>Entry to educational or recreational venue</li>
-            <li>Guided nature or heritage experience</li>
-            <li>Group lunch included</li>
-            <li>Trained Ferols guide/coordinator on the day</li>
-            <li>Risk-assessed and school-friendly itinerary</li>
-            </ul>
-          </div>
-          <div class="dayout-cta-wrap">
-            <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20Students%20Day%20Out%20with%20Ferols%20Tours." target="_blank" class="dayout-cta">Plan This Day &rarr;</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="dayout-card reveal d3">
-        <div class="dayout-img">
-          <img src="images/dayout-corporate.jpg" alt="Corporate Day Out" loading="lazy" />
-        </div>
-        <div class="dayout-body">
-          <div class="dayout-icon">&#128200;</div>
-          <h3 class="dayout-title">Corporate Day Out</h3>
-          <p class="dayout-desc">One day, maximum impact. Strategy meets safari — half-day offsites, team lunches, or full-day game drives for your department.</p>
-          <button class="dayout-inc-toggle" onclick="toggleDayoutInc(this)">&#10003; What&rsquo;s Included <span class="arr">&#9660;</span></button>
-          <div class="dayout-inc-body">
-            <ul>
-            <li>Transport from office/Nairobi and back</li>
-            <li>Entry to selected park, conservancy, or venue</li>
-            <li>Half-day or full-day structured program</li>
-            <li>Team lunch or bush barbecue</li>
-            <li>Dedicated Ferols coordinator throughout</li>
-            <li>Optional: team challenge activities on request</li>
-            </ul>
-          </div>
-          <div class="dayout-cta-wrap">
-            <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20Corporate%20Day%20Out%20with%20Ferols%20Tours." target="_blank" class="dayout-cta">Plan This Day &rarr;</a>
-          </div>
-        </div>
-      </div>
-
     </div>
-
-    <!-- Bottom CTA -->
-    <div class="reveal" style="background:var(--green);border-radius:14px;padding:36px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
-      <div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--white);margin-bottom:6px">Don&rsquo;t see your group here?</h3>
-        <p style="font-size:.88rem;color:rgba(255,255,255,.72);line-height:1.6">We plan day experiences for any group, occasion, or budget. Just tell us who&rsquo;s coming.</p>
-      </div>
-      <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20group%20day%20out%20with%20Ferols%20Tours.%20We%20are%20a%20group%20of%20" target="_blank" class="btn btn-gold" style="white-space:nowrap;flex-shrink:0">Plan Your Day Out &rarr;</a>
-    </div>
-
   </div>
 </section>
 
@@ -1430,6 +1534,7 @@
           <a href="https://www.facebook.com/ferolstoursandsafaris" target="_blank" class="fsoc">f</a>
           <a href="https://www.instagram.com/ferolstoursandsafaris" target="_blank" class="fsoc">ig</a>
           <a href="https://www.tiktok.com/@ferolstoursandsafaris" target="_blank" class="fsoc">tt</a>
+          <a href="https://x.com/ferolstours" target="_blank" class="fsoc" title="X / Twitter" style="font-size:.7rem;font-family:'DM Sans',sans-serif">&#120143;</a>
         </div>
       </div>
       <div class="fc"><h5>Explore</h5><ul class="fl"><li><a href="#experiences">Day Safaris</a></li><li><a href="#experiences">Weekend Getaways</a></li><li><a href="#departures">Weekly Departures</a></li><li><a href="#staycation">Staycations</a></li><li><a href="#corporate">Corporate Travel</a></li>
