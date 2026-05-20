@@ -108,11 +108,11 @@
     .dest-arr{position:absolute;top:14px;right:14px;width:32px;height:32px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:.9rem;opacity:0;transition:opacity .3s;backdrop-filter:blur(4px)}
     .dest-item:hover .dest-arr{opacity:1}
     /* DEPARTURES */
-    #departures{padding:100px 0;background:var(--cream)}
+    #departures{padding:100px 0 48px;background:var(--cream)}
     .dep-regions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:14px}
     .dep-reg{padding:9px 20px;border-radius:100px;font-size:.82rem;font-weight:600;background:var(--sand);color:var(--char);cursor:pointer;border:none;transition:all .2s}
     .dep-reg.active{background:var(--green);color:var(--white)}.dep-note-sm{text-align:center;font-size:.78rem;color:var(--muted);margin-bottom:44px}
-    .dep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:start}
+    .dep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
     @media(max-width:960px){.dep-grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:560px){.dep-grid{grid-template-columns:1fr}}
     .dep-card{background:var(--white);border-radius:12px;border:1px solid var(--sand);overflow:hidden;box-shadow:var(--cs);transition:transform .3s,box-shadow .3s}
@@ -372,7 +372,7 @@
     .dayout-inc-body ul li{font-size:.76rem;color:var(--muted);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
     .dayout-inc-body ul li::before{content:'✓';color:var(--green);font-weight:700;font-size:.72rem;flex-shrink:0;margin-top:1px}
     /* DAY OUT */
-    #dayout{padding:100px 0;background:var(--cream)}
+    #dayout{padding:48px 0 100px;background:var(--cream)}
     .dayout-intro{text-align:center;margin-bottom:56px}
     .dayout-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:48px;align-items:start}
     .dayout-card{background:var(--white);border-radius:12px;overflow:hidden;box-shadow:var(--cs);transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;cursor:pointer;border-top:4px solid var(--gold)}
@@ -558,9 +558,13 @@
 
     /* ── IMAGE & RENDER PERFORMANCE ────────────────── */
     /* Defer rendering of off-screen sections */
-    #why,#destinations,#departures,#dayout,#corporate,#staycation,#testimonials,#cta-final{
+    #why,#destinations,#corporate,#staycation,#testimonials,#cta-final{
       content-visibility:auto;
       contain-intrinsic-size:0 600px;
+    }
+    #departures,#dayout{
+      content-visibility:auto;
+      contain-intrinsic-size:0 1200px;
     }
     /* Prevent layout shift on all images */
     img{
@@ -1018,7 +1022,6 @@
         </div>
       </div>
 
-    </div>
       <div class="dep-card reveal d2" data-region="border">
         <div class="dep-stripe" style="background:linear-gradient(90deg,#3a0070,#6600b3)"></div>
         <div class="dep-body">
@@ -1430,10 +1433,18 @@
             </div>
           </div>
 
-          <!-- Single card -->
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center">
-            <div style="border-radius:10px;overflow:hidden;height:220px;position:relative">
-              <img src="images/syok-apartment.jpg" alt="Ferols Furnished Apartments Syokimau" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" decoding="async" />
+          <!-- Photo grid + specs -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start">
+            <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:160px 140px;gap:8px">
+              <div style="grid-column:span 2;border-radius:10px;overflow:hidden;height:160px">
+                <img src="images/syok-apartment.jpg" alt="Ferols Furnished Apartments" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" decoding="async" />
+              </div>
+              <div style="border-radius:10px;overflow:hidden;height:140px">
+                <img src="images/syok-room2.jpg" alt="Ferols Apartments Interior" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" decoding="async" />
+              </div>
+              <div style="border-radius:10px;overflow:hidden;height:140px">
+                <img src="images/syok-room3.jpg" alt="Ferols Apartments Room" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" decoding="async" />
+              </div>
             </div>
             <div>
               <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:10px">Room Options &amp; Specs</div>
@@ -1475,8 +1486,12 @@
       </div>
     </div>
 
-    <div class="stay-grid">
-      <div class="stay-left">
+    <div class="con">
+    <!-- two col: text left, photos right -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-bottom:40px">
+
+      <!-- LEFT: text content -->
+      <div>
         <span class="lbl reveal">New Experience</span>
         <h2 class="stitle reveal" style="text-align:left">Luxury Staycations<br>in <em>Nairobi</em></h2>
         <p class="stay-desc reveal">You don&rsquo;t always need to leave the city to escape. We design immersive private experiences inside handpicked Nairobi spaces &mdash; from romantic hideaways to elegant birthday surprises.</p>
@@ -1486,46 +1501,43 @@
           <div class="stay-feat"><div class="stay-dot"></div>Private Airbnb experiences, fully curated</div>
           <div class="stay-feat"><div class="stay-dot"></div>Chef, photography &amp; wellness add-ons available</div>
         </div>
-        <a href="https://wa.me/254732978537?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Staycation." target="_blank" class="btn btn-green reveal">Book Your Staycation &rarr;</a>
-        <div class="stay-photos reveal">
-          <div class="stay-photo"><img src="images/stay-1.jpg" alt="Luxury room" loading="lazy" decoding="async" /></div>
-          <div class="stay-photo"><img src="images/stay-2.jpg" alt="Romantic setup" loading="lazy" decoding="async" /></div>
-          <div class="stay-photo"><img src="images/stay-3.jpg" alt="Luxury suite" loading="lazy" decoding="async" /></div>
-        </div>
+        <a href="https://wa.me/254732978537?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Staycation." target="_blank" class="btn btn-green reveal" style="margin-top:8px">Book Your Staycation &rarr;</a>
       </div>
-      <div class="stay-pkgs">
-        <div class="stay-pkg reveal">
-          <div class="stay-hd"><div class="stay-pn">Getaway Package</div></div>
-          <div class="stay-price">KES 18,000 <small>/ night</small></div>
-          <ul class="stay-items">
-            <li>One-night private Airbnb (2 guests)</li><li>Welcome drinks &amp; snacks basket</li>
-            <li>Curated d&eacute;cor setup (petals, candles)</li><li>Breakfast delivered to room</li>
-            <li>Dedicated WhatsApp host support</li>
-          </ul>
-          <a href="https://wa.me/254732978537?text=Hi%2C%20I%27d%20like%20the%20Getaway%20Staycation%20Package." target="_blank" class="btn-og" style="width:100%;justify-content:center">Book This Package</a>
-        </div>
-        <div class="stay-pkg feat reveal d1">
-          <div class="stay-hd"><div class="stay-pn">Premium Experience</div><span class="stay-pb">Best Choice</span></div>
-          <div class="stay-price">KES 35,000 <small>/ night</small></div>
-          <ul class="stay-items">
-            <li>Two-night luxury Airbnb (sleeps 4)</li><li>Private chef &mdash; 3-course dinner included</li>
-            <li>Full luxury d&eacute;cor &amp; balloon setup</li><li>Breakfast &amp; brunch both mornings</li>
-            <li>1-hour professional photography session</li><li>Personalised welcome note &amp; flowers</li>
-            <li>Airport/hotel transfers included</li>
-          </ul>
-          <a href="https://wa.me/254732978537?text=Hi%2C%20I%27d%20like%20the%20Premium%20Staycation%20Package." target="_blank" class="btn btn-gold" style="width:100%;justify-content:center">Book This Package</a>
-        </div>
-        <div class="addons reveal d2">
-          <h4>&#10024; Available Add-Ons</h4>
-          <div class="atags">
-            <span class="atag">&#127874; Birthday Cake</span><span class="atag">&#128247; Photo Session</span>
-            <span class="atag">&#128104;&#8205;&#127859; Private Chef</span><span class="atag">&#127801; Extra D&eacute;cor</span>
-            <span class="atag">&#129494; Spa Treatment</span><span class="atag">&#127870; Champagne</span>
-            <span class="atag">&#128663; Transfer Service</span>
-          </div>
-        </div>
+
+      <!-- RIGHT: photos aligned with text -->
+      <div class="stay-photos reveal d1">
+        <div class="stay-photo"><img src="images/stay-1.jpg" alt="Luxury room" loading="lazy" decoding="async" /></div>
+        <div class="stay-photo"><img src="images/stay-2.jpg" alt="Romantic setup" loading="lazy" decoding="async" /></div>
+        <div class="stay-photo"><img src="images/stay-3.jpg" alt="Luxury suite" loading="lazy" decoding="async" /></div>
+      </div>
+
+    </div>
+
+    <!-- Add-ons below, full width -->
+    <div class="addons reveal">
+      <h4>&#10024; Available Add-Ons</h4>
+      <p style="font-size:.84rem;color:var(--muted);line-height:1.7;margin-bottom:16px">Upgrade your stay or add extras when booking. Just let us know on WhatsApp.</p>
+      <div class="atags">
+        <span class="atag">&#127874; Birthday Cake</span>
+        <span class="atag">&#128247; Photo Session</span>
+        <span class="atag">&#128104;&#8205;&#127859; Private Chef</span>
+        <span class="atag">&#127801; Extra D&eacute;cor</span>
+        <span class="atag">&#129494; Spa Treatment</span>
+        <span class="atag">&#127870; Champagne</span>
+        <span class="atag">&#128663; Transfer Service</span>
       </div>
     </div>
+
+    <!-- Responsive -->
+    <style>
+      @media(max-width:768px){
+        #staycation>div>div[style*="grid-template-columns:1fr 1fr"]{
+          grid-template-columns:1fr!important;gap:32px!important
+        }
+      }
+    </style>
+    </div><!-- /con -->
+
   </div>
 </section>
 
